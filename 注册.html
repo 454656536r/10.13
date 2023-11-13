@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo</title>
+  <link href="//unpkg.com/layui@2.8.18/dist/css/layui.css" rel="stylesheet">
+</head>
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    /* Optional background color */
+  }
+
+  .center-box {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Adjust shadow as needed */
+    background-color: #ffffff;
+    /* Optional background color */
+  }
+
+  .demo-reg-container {
+    width: 320px;
+    margin: 21px auto 0;
+  }
+
+  .demo-reg-other .layui-icon {
+    position: relative;
+    display: inline-block;
+    margin: 0 2px;
+    top: 2px;
+    font-size: 26px;
+  }
+</style>
+
+<body>
+  <div class="center-box">
+    <h2 style="text-align: center;">注册</h2>
+    <form class="layui-form">
+      <div class="demo-reg-container">
+        <!-- 名字 -->
+        <div class="layui-form-item">
+          <div class="layui-input-wrap">
+            <div class="layui-input-prefix">
+              <i class="layui-icon layui-icon-username"></i>
+            </div>
+            <input type="text" name="nickname" value="" lay-verify="required" placeholder="昵称" autocomplete="off"
+              class="layui-input" lay-affix="clear">
+          </div>
+        </div>
+        <!-- 密码 -->
+        <div class="layui-form-item">
+          <div class="layui-input-wrap">
+            <div class="layui-input-prefix">
+              <i class="layui-icon layui-icon-password"></i>
+            </div>
+            <input type="password" name="password" value="" lay-verify="required" placeholder="密码" autocomplete="off"
+              class="layui-input" id="reg-password" lay-affix="eye">
+          </div>
+        </div>
+        <!-- 确认密码 -->
+        <div class="layui-form-item">
+          <div class="layui-input-wrap">
+            <div class="layui-input-prefix">
+              <i class="layui-icon layui-icon-password"></i>
+            </div>
+            <input type="password" name="confirmPassword" value="" lay-verify="required|confirmPassword"
+              placeholder="确认密码" autocomplete="off" class="layui-input" lay-affix="eye">
+          </div>
+        </div>
+        <!-- 邮箱 -->
+        <div class="layui-form-item">
+          <div class="layui-input-wrap">
+            <div class="layui-input-prefix">
+              <i class="layui-icon layui-icon-email"></i>
+            </div>
+            <input type="text" name="password" value="" lay-verify="required" placeholder="邮箱" autocomplete="off"
+              class="layui-input" id="reg-password">
+          </div>
+        </div>
+        <!-- 验证码 -->
+        <div class="layui-form-item">
+          <div class="layui-input-wrap">
+            <div class="layui-input-prefix">
+              <i class="layui-icon layui-icon-vercode"></i>
+            </div>
+            <input type="text" name="cellphone" value="" lay-verify="required|phone" placeholder="手机号"
+              lay-reqtext="请填写手机号" autocomplete="off" class="layui-input" id="reg-cellphone">
+          </div>
+
+        </div>
+        <!-- 手机号 -->
+        <div class="layui-form-item">
+          <div class="layui-row">
+            <div class="layui-col-xs7">
+              <div class="layui-input-wrap">
+                <div class="layui-input-prefix">
+                  <i class="layui-icon layui-icon-cellphone"></i>
+                </div>
+                <input type="text" name="vercode" value="" lay-verify="required" placeholder="验证码" lay-reqtext="请填写验证码"
+                  autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-col-xs5">
+              <div style="margin-left: 10px;">
+                <img src="https://www.oschina.net/action/user/captcha"
+                  onclick="this.src='https://www.oschina.net/action/user/captcha?t='+ new Date().getTime();">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- qq号 -->
+        <div class="layui-form-item">
+          <div class="layui-input-wrap">
+            <div class="layui-input-prefix">
+              <i class="layui-icon layui-icon-login-qq"></i>
+            </div>
+            <input type="text" name="qqhao" value="" lay-verify="required" placeholder="QQ" autocomplete="off"
+              class="layui-input" lay-affix="clear">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="demo-reg">注册</button>
+        </div>
+        <div class="layui-form-item demo-reg-other">
+          <a href="./登录.html">登录已有帐号</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
+  <script src="//unpkg.com/layui@2.8.18/dist/layui.js"></script>
+  <script>
+    layui.use(function () {
+      var $ = layui.$;
+      var form = layui.form;
+      var layer = layui.layer;
+      var util = layui.util;
+
+      // 自定义验证规则 
+      // 确认密码
+      form.verify({
+        confirmPassword: function (value, item) {
+          var passwordValue = $('#reg-password').val();
+          if (value !== passwordValue) {
+            return '两次密码输入不一致';
+          }
+        }
+      });
+
+      // 提交事件
+      form.on('submit(demo-reg)', function (data) {
+        alert("注册成功")
+        window.location.href = "./登录.html";
+        return false;
+      });
+
+      // 普通事件
+      util.on('lay-on', {
+        // 获取验证码
+        'reg-get-vercode': function (othis) {
+          var isvalid = form.validate('#reg-cellphone'); // 主动触发验证，v2.7.0 新增 
+          // 验证通过
+          if (isvalid) {
+            layer.msg('手机号规则验证通过');
+            // 此处可继续书写「发送验证码」等后续逻辑
+            // …
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
