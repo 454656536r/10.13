@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Demo</title>
+  <title>注册帐号</title>
   <link href="//unpkg.com/layui@2.8.18/dist/css/layui.css" rel="stylesheet">
+  <script src="./jquery.min.js"></script>
 </head>
 <style>
   body {
@@ -39,6 +40,24 @@
     top: 2px;
     font-size: 26px;
   }
+
+  .ma {
+    width: 130px;
+    height: 30px;
+    margin-top: 10px;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    background-color: #fff;
+    color: #5c5c5c;
+  }
+
+  .ma:hover {
+    border: 1px solid #cbcbcb;
+  }
+
+  .layui-col-xs5 {
+    margin-top: -10px;
+  }
 </style>
 
 <body>
@@ -52,8 +71,8 @@
             <div class="layui-input-prefix">
               <i class="layui-icon layui-icon-username"></i>
             </div>
-            <input type="text" name="nickname" value="" lay-verify="required" placeholder="昵称" autocomplete="off"
-              class="layui-input" lay-affix="clear">
+            <input id="namer" type="text" name="nickname" value="" lay-verify="required" placeholder="昵称"
+              autocomplete="off" class="layui-input" lay-affix="clear">
           </div>
         </div>
         <!-- 密码 -->
@@ -62,8 +81,8 @@
             <div class="layui-input-prefix">
               <i class="layui-icon layui-icon-password"></i>
             </div>
-            <input type="password" name="password" value="" lay-verify="required" placeholder="密码" autocomplete="off"
-              class="layui-input" id="reg-password" lay-affix="eye">
+            <input type="password" id="password" name="password" value="" lay-verify="required" placeholder="密码"
+              autocomplete="off" class="layui-input" lay-affix="eye">
           </div>
         </div>
         <!-- 确认密码 -->
@@ -72,8 +91,9 @@
             <div class="layui-input-prefix">
               <i class="layui-icon layui-icon-password"></i>
             </div>
-            <input type="password" name="confirmPassword" value="" lay-verify="required|confirmPassword"
-              placeholder="确认密码" autocomplete="off" class="layui-input" lay-affix="eye">
+            <input id="reg-password" type="password" name="confirmPassword" value=""
+              lay-verify="required|confirmPassword" placeholder="确认密码" autocomplete="off" class="layui-input"
+              lay-affix="eye">
           </div>
         </div>
         <!-- 邮箱 -->
@@ -82,8 +102,8 @@
             <div class="layui-input-prefix">
               <i class="layui-icon layui-icon-email"></i>
             </div>
-            <input type="text" name="password" value="" lay-verify="required" placeholder="邮箱" autocomplete="off"
-              class="layui-input" id="reg-password">
+            <input id="you" type="text" name="password" value="" lay-verify="required" placeholder="邮箱"
+              autocomplete="off" class="layui-input">
           </div>
         </div>
         <!-- 验证码 -->
@@ -92,8 +112,8 @@
             <div class="layui-input-prefix">
               <i class="layui-icon layui-icon-vercode"></i>
             </div>
-            <input type="text" name="cellphone" value="" lay-verify="required|phone" placeholder="手机号"
-              lay-reqtext="请填写手机号" autocomplete="off" class="layui-input" id="reg-cellphone">
+            <input id="shouji" type="text" name="cellphone" value="" lay-verify="required|phone" placeholder="手机号"
+              lay-reqtext="请填写手机号" autocomplete="off" class="layui-input">
           </div>
 
         </div>
@@ -105,17 +125,16 @@
                 <div class="layui-input-prefix">
                   <i class="layui-icon layui-icon-cellphone"></i>
                 </div>
-                <input type="text" name="vercode" value="" lay-verify="required" placeholder="验证码" lay-reqtext="请填写验证码"
-                  autocomplete="off" class="layui-input">
+                <input id="yzma" type="text" name="vercode" value="" lay-verify="required" placeholder="验证码"
+                  lay-reqtext="请填写验证码" autocomplete="off" class="layui-input">
               </div>
             </div>
-            <div class="layui-col-xs5">
-              <div style="margin-left: 10px;">
-                <img src="https://www.oschina.net/action/user/captcha"
-                  onclick="this.src='https://www.oschina.net/action/user/captcha?t='+ new Date().getTime();">
-              </div>
+            <!-- 验证码 -->
+            <div class="layui-col-xs5" id="yan">
+
             </div>
           </div>
+          <button class="ma" id="huoqu">获取验证码</button>
         </div>
         <!-- qq号 -->
         <div class="layui-form-item">
@@ -123,12 +142,12 @@
             <div class="layui-input-prefix">
               <i class="layui-icon layui-icon-login-qq"></i>
             </div>
-            <input type="text" name="qqhao" value="" lay-verify="required" placeholder="QQ" autocomplete="off"
+            <input id="qq" type="text" name="qqhao" value="" lay-verify="required" placeholder="QQ" autocomplete="off"
               class="layui-input" lay-affix="clear">
           </div>
         </div>
         <div class="layui-form-item">
-          <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="demo-reg">注册</button>
+          <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="demo-reg" id="zhuce">注册</button>
         </div>
         <div class="layui-form-item demo-reg-other">
           <a href="./登录.html">登录已有帐号</a>
@@ -141,17 +160,55 @@
   <!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
   <script src="//unpkg.com/layui@2.8.18/dist/layui.js"></script>
   <script>
+    // 验证码
+    $(function () {
+      $("#huoqu").click(function () {
+        $.get(
+          "http://manage.zzgoodqc.cn/api/user/captcha?mobile=" + $('#shouji').val(),
+          function (res) {
+            $("#yan").html(res)
+          }
+        )
+        return false;
+      })
+      $("#zhuce").click(function () {
+        event.preventDefault()
+        $.ajax({
+          url: "http://manage.zzgoodqc.cn/api/user/register",
+          type: "POST",
+          data: {
+            username: $('#namer').val(),
+            password: $('#password').val(),
+            email: $('#you').val(),
+            mobile: $('#shouji').val(),
+            captcha: $('#yzma').val(),
+            qq: $('#qq').val(),
+          },
+          success: function (res) {
+            console.log(res);
+            alert("注册成功")
+            window.location.href = "./登录.html";
+            return false;
+          }
+        })
+
+      })
+    })
+
+
+
+
+
     layui.use(function () {
       var $ = layui.$;
       var form = layui.form;
       var layer = layui.layer;
       var util = layui.util;
 
-      // 自定义验证规则 
       // 确认密码
       form.verify({
         confirmPassword: function (value, item) {
-          var passwordValue = $('#reg-password').val();
+          var passwordValue = $('#password').val();
           if (value !== passwordValue) {
             return '两次密码输入不一致';
           }
@@ -159,25 +216,11 @@
       });
 
       // 提交事件
-      form.on('submit(demo-reg)', function (data) {
-        alert("注册成功")
-        window.location.href = "./登录.html";
-        return false;
-      });
-
-      // 普通事件
-      util.on('lay-on', {
-        // 获取验证码
-        'reg-get-vercode': function (othis) {
-          var isvalid = form.validate('#reg-cellphone'); // 主动触发验证，v2.7.0 新增 
-          // 验证通过
-          if (isvalid) {
-            layer.msg('手机号规则验证通过');
-            // 此处可继续书写「发送验证码」等后续逻辑
-            // …
-          }
-        }
-      });
+      // form.on('submit(demo-reg)', function (data) {
+      //   alert("注册成功")
+      //   window.location.href = "./登录.html";
+      //   return false;
+      // });
     });
   </script>
 

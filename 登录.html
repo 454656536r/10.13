@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Demo</title>
+  <title>登录</title>
   <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
   <link href="//unpkg.com/layui@2.8.18/dist/css/layui.css" rel="stylesheet">
   <script src="./jquery.min.js"></script>
@@ -43,6 +43,24 @@
       background-color: #ffffff;
       /* Optional background color */
     }
+
+    .ma {
+      width: 130px;
+      height: 30px;
+      margin-top: 10px;
+      border: 1px solid #eee;
+      border-radius: 2px;
+      background-color: #fff;
+      color: #5c5c5c;
+    }
+
+    .ma:hover {
+      border: 1px solid #cbcbcb;
+    }
+
+    .layui-col-xs5 {
+      margin-top: -10px;
+    }
   </style>
   <div class="center-box">
     <h2 style="text-align: center;">登陆</h2>
@@ -62,31 +80,13 @@
             <div class="layui-input-prefix">
               <i class="layui-icon layui-icon-password"></i>
             </div>
-            <input type="password" name="password" value="" lay-verify="required" placeholder="密   码"
+            <input id="password" type="password" name="password" value="" lay-verify="required" placeholder="密   码"
               lay-reqtext="请填写密码" autocomplete="off" class="layui-input" lay-affix="eye">
           </div>
         </div>
+        
         <div class="layui-form-item">
-          <div class="layui-row">
-            <div class="layui-col-xs7">
-              <div class="layui-input-wrap">
-                <div class="layui-input-prefix">
-                  <i class="layui-icon layui-icon-vercode"></i>
-                </div>
-                <input type="text" name="captcha" value="" lay-verify="required" placeholder="验证码" lay-reqtext="请填写验证码"
-                  autocomplete="off" class="layui-input" lay-affix="clear">
-              </div>
-            </div>
-            <div class="layui-col-xs5">
-              <div style="margin-left: 10px;">
-                <img src="https://www.oschina.net/action/user/captcha"
-                  onclick="this.src='https://www.oschina.net/action/user/captcha?t='+ new Date().getTime();">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-form-item">
-          <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="demo-login">登录</button>
+          <button id="deng" class="layui-btn layui-btn-fluid" lay-submit lay-filter="demo-login">登录</button>
         </div>
         <div class="layui-form-item demo-login-other">没有账号？<a href="./注册.html">注册帐号</a>
         </div>
@@ -98,25 +98,67 @@
   <!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
   <script src="//unpkg.com/layui@2.8.18/dist/layui.js"></script>
   <script>
+    $("#deng").click(function () {
+      let expiresTime = "1y"
+      event.preventDefault();
+      $.ajax({
+        url: "http://manage.zzgoodqc.cn/api/user/login",
+        type: "post",
+        data: {
+          username: $('#namess').val(),
+          password: $('#password').val(),
+          expiresTime: "1y"
+        },
+        headers: {
+          Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+        },
+        success: function (res) {
+          console.log(res.data.token);
+          if (res.status == '200') {
+            alert("登录成功");
+
+            window.location.href = "./商品管理.html";
+          } else {
+            alert("登录失败：" + res.message);
+          }
+
+
+        },
+      });
+    });
+
+
+    // 验证码
+    $(function () {
+      $("#huoqu").click(function () {
+        $.get(
+          "http://manage.zzgoodqc.cn/api/user/captcha?mobile=13811112222",
+          function (res) {
+            console.log(res);
+            $("#yan").html(res)
+          }
+        )
+        return false;
+      })
+    })
+    // 名字
     $("#namess").on('blur', function () {
       var valuer = $("#namess").val()
       var zimu = /^[a-zA-Z0-9_]+$/
       if (zimu.test(valuer)) {
-        console.log('111');
       } else {
         alert("请输入包含数字字母下划线")
       }
     })
 
+
     layui.use(function () {
       var form = layui.form;
       var layer = layui.layer;
       // 提交事件
-      form.on('submit(demo-login)', function (data) {
-        alert("登录成功")
-        window.location.href = "./注册.html";
-        return false;
-      });
+      // form.on('submit(demo-login)', function (data) {
+
+      // });
     });
   </script>
 
