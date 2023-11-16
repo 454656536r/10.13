@@ -239,26 +239,22 @@
                 <span>商品限制数量：已使用117个/无限制</span>
             </div><br>
             <div class="sou">
-                商品名称：<input type="text" placeholder="商品名称/编码/条码">&emsp;&emsp;
-                商品分类: <select id="fruit" name="fruit" style="width: 200px;">
+                商品名称：<input type="text" placeholder="商品名称/编码/条码" id="bianma">&emsp;&emsp;
+                商品分类: <select id="fruit" name="fruit" style="width: 200px;" id="feblei">
                     <option value="">全部</option>
-                    <option value="apple">苹果</option>
-                    <option value="banana">香蕉</option>
-                    <option value="orange">橙子</option>
-                    <option value="grape">葡萄</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
                 </select>&emsp;&emsp;
-                创建时间：<input type="datetime-local" style="width: 200px;"><br>
-                商品类型：<select id="leixin" name="leixin" style="width: 200px;">
+                创建时间：<input type="datetime-local" style="width: 200px;" id="time">&emsp;&emsp;
+                商品类型：<select id="leixin" name="leixin" style="width: 200px;" id="lei">
                     <option value="">全部</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                 </select>
                 <button
-                    style=" width: 50px;height: 25px; background-color: rgb(77, 154, 255);color: aliceblue;border: none;margin: 7px;" id="sous">搜索</button>
-                <button style="border: none; background-color: aliceblue;color:rgb(77, 154, 255)">重置</button>
-                <button style="border: none; background-color: aliceblue;color:rgb(77, 154, 255)">导出</button>
-                <button style="border: none; background-color: aliceblue;color:rgb(77, 154, 255)">复制商品下载</button>
-                <button class="wen">？</button>
+                    style=" width: 50px;height: 25px; background-color: rgb(77, 154, 255);color: aliceblue;border: none;margin: 7px;"
+                    id="sous">搜索</button>
+                <a href="#"style="border: none; background-color: aliceblue;color:rgb(77, 154, 255)">重置</a>
             </div>
 
             <!-- 遮罩层 -->
@@ -289,13 +285,13 @@
                         <input type="text" id="actual" name="actual_sales" required>
 
                         <label for="status">商品状态</label>
-                        <input type="text" id="status" name="status" required>
+                        <input type="text" id="status" name="status" value="on_shelf" required>
 
                         <label for="type">类型</label>
                         <input type="text" id="type" name="type" value="1" required>
 
                         <label for="category">分类id</label>
-                        <input type="text" id="category" name="category" required>
+                        <input type="text" id="category" name="category" value="1" required>
 
                         <button type="submit" id="tianjia">添加商品</button>
                     </form>
@@ -334,7 +330,7 @@
                         <input type="text" id="type-tian" name="type" value="1" required>
 
                         <label for="category">分类id</label>
-                        <input type="text" id="category-tian" name="category" required>
+                        <input type="text" id="category-tian" name="category" value="1" required>
 
                         <button type="submit" id="tianjia-tian">修改商品</button>
                     </form>
@@ -365,15 +361,47 @@
     <script>
         // 分页
         let page = 1;
-        let limit = 8;
+        let limit = 10;
 
         $(function () {
             xuanran()
         })
         // 搜索
-        $("#sous").click(function(){
+        $("#sous").click(function () {
+            let der = {
+                title: $("#bianma").val(),
+                category: $("#feblei").val(),
+                start_time: $("#time").val(),
+                type: $("#lei").val(),
+            }
             $.ajax({
-                url:"https://manage.zzgoodqc.cn/api/goods/:id",
+                url: "https://manage.zzgoodqc.cn/api/goods/",
+                type: "GET",
+                data: der,
+                headers: {
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+                },
+                success: function (res) {
+                    html = ""
+                    console.log(res);
+                    res.data.data.forEach((item, index) => {
+                        html += `
+                        <tr>
+                        <td><input type="checkbox">${item.sort}</td>
+                        <td style="width: 350px;">
+                            <img src="${item.thumbnail}" style="float: left; width: 70px; height: 70px;margin:10px;">
+                            <p>${item.title}</p>
+                        </td>
+                        <td>￥${item.price}</td>
+                        <td>${item.stock}</td>
+                        <td>${item.actual_sales}</td>
+                        <td>${item.create_time}</td>
+                        <td><button data-id="${item.id}">下架</button><button id="bian" data-id="${item.id}">编辑</button><button id="shan" data-id="${item.id}">删除</button><button>复制</button>
+                        </td>
+                    </tr>`
+                    });
+                    $("tbody").html(html)
+                }
             })
         })
         // 编辑
@@ -512,7 +540,7 @@
                         <td>${item.stock}</td>
                         <td>${item.actual_sales}</td>
                         <td>${item.create_time}</td>
-                        <td><button data-id="${item.id}">下架</button><button id="bian" data-id="${item.id}">编辑</button><button id="shan" data-id="${item.id}">删除</button><button>复制</button>
+                        <td><button data-id="${item.id}">下架</button><button id="bian" data-id="${item.id}">编辑</button><button id="shan" data-id="${item.id}">删除</button><button>查看</button>
                         </td>
                     </tr>`
                     });
@@ -521,13 +549,13 @@
 
             })
         }
+        // 弹窗
         $(document).ready(function () {
             // 点击按钮显示弹窗
             $("#open-popup").click(function () {
                 $("#overlay").fadeIn(200);
                 $("#popup").fadeIn(400);
             });
-
             // 点击关闭按钮或遮罩层隐藏弹窗
             $("#close-btn, #close-btn1,#overlay,#overlay1").click(function () {
                 $("#overlay").fadeOut(400);
