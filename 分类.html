@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./jquery.min.js"></script>
-    <script src="//unpkg.com/layui@2.8.18/dist/layui.js"></script>
 </head>
 <style>
     .box {
         width: 100%;
-        /* height: 100vh; */
+        height: 100vh;
         /* background-color: rgb(255, 215, 162); */
         overflow: hidden;
     }
@@ -88,7 +87,8 @@
     th,
     td {
         height: 45px;
-        border: 1px solid rgb(198, 198, 198);
+        border-bottom: 1px solid rgb(198, 198, 198);
+        text-align: center;
     }
 
     tbody p {
@@ -270,10 +270,8 @@
                         <label for="title">标题</label>
                         <input type="text" id="title" name="title" required>
 
-                        <button type="button" class="layui-btn" id="thumbnail">
-                            <i class="layui-icon layui-icon-upload"></i> 单图片上传
-                        </button>
-                        <!-- <input type="text" id="thumbnail" name="thumbnail" required> -->
+                        <label for="thumbnail">图片链接</label>
+                        <input type="text" id="thumbnail" name="thumbnail" required>
 
                         <label for="sort">排序</label>
                         <input type="text" id="sort" name="sort" value="0" required>
@@ -296,7 +294,7 @@
                         <label for="category">分类id</label>
                         <input type="text" id="category" name="category" value="1" required>
 
-                        <button type="submit" id="tianjia">添加商品</button>
+                        <button type="submit" id="tianjia">添加分类</button>
                     </form>
                 </div>
             </div>
@@ -344,12 +342,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox">排序</th>
+                        <th>ID</th>
                         <th>商品</th>
-                        <th>价格</th>
-                        <th>库存</th>
-                        <th>实际销量</th>
                         <th>创建时间</th>
+                        <th>修改时间</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -369,23 +365,6 @@
         $(function () {
             xuanran()
         })
-        // 图片
-        layui.use('upload', function () {
-            var upload = layui.upload;
-            let token = localStorage.getItem("rty")
-            // 单图片上传
-            var uploadInst = upload.render({
-                elem: '#thumbnail',
-                url: 'https://manage.zzgoodqc.cn/api/upload',
-                style: "file",
-                headers: {
-                    Authorization: token
-                },
-                done: function (res) {
-                    console.log(res);
-                },
-            });
-        });
         // 搜索
         $("#sous").click(function () {
             let der = {
@@ -433,7 +412,7 @@
             $("b").html(index)
             let token = localStorage.getItem("rty")
             $.ajax({
-                url: "https://manage.zzgoodqc.cn/api/goods/" + index,
+                url: "https://manage.zzgoodqc.cn/api/category/" + index,
                 type: "get",
                 headers: {
                     Authorization: token
@@ -496,7 +475,7 @@
         $("#tianjia").click(function () {
             event.preventDefault()
             var data = {
-                title: $("#title").val(),
+                name: $("#title").val(),
                 thumbnail: $("#thumbnail").val(),
                 category: $("#category").val(),
                 price: $("#price").val(),
@@ -508,7 +487,7 @@
             };
             let token = localStorage.getItem("rty")
             $.ajax({
-                url: "https://manage.zzgoodqc.cn/api/goods",
+                url: "https://manage.zzgoodqc.cn/api/category",
                 type: "POST",
                 dataType: "json",
                 headers: {
@@ -523,13 +502,13 @@
                 }
             })
         })
-        // 删除到回收站
+        // 删除
         $("tbody").on('click', "button#huishou", function () {
             var aidi = $(this).data('id')
             console.log(aidi);
             let token = localStorage.getItem("rty")
             $.ajax({
-                url: "https://manage.zzgoodqc.cn/api/goods/solt/" + aidi,
+                url: "https://manage.zzgoodqc.cn/api/category/" + aidi,
                 type: "DELETE",
                 headers: {
                     Authorization: token
@@ -545,7 +524,7 @@
             html = ""
             let token = localStorage.getItem("rty")
             $.ajax({
-                url: `https://manage.zzgoodqc.cn/api/goods?page=${page}&limit=${limit}&is_sale=1`,// 分页
+                url: `https://manage.zzgoodqc.cn/api/category`,// 分页
                 type: "GET",
                 dataType: "json",
                 headers: {
@@ -556,19 +535,14 @@
                     res.data.data.forEach((item, index) => {
                         html += `
                         <tr>
-                        <td><input type="checkbox">${item.sort}</td>
-                        <td style="width: 350px;">
-                            <img src="${item.thumbnail}" style="float: left; width: 70px; height: 70px;margin:10px;">
-                            <p>${item.title}</p>
-                        </td>
-                        <td>￥${item.price}</td>
-                        <td>${item.stock}</td>
-                        <td>${item.actual_sales}</td>
-                        <td>${item.create_time}</td>
-                        <td><button data-id="${item.id}">下架</button>
-                        <button id="bian" data-id="${item.id}">编辑</button><br>
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td>${item.created_at}</td>
+                        <td>${item.updated_at}</td>
+                        <td>
+                        <button id="bian" data-id="${item.id}">编辑</button>
                         <button>查看</button>
-                        <button id="huishou" data-id="${item.id}">删除到回收站</button>
+                        <button id="huishou" data-id="${item.id}">删除分类</button>
                         </td>
                     </tr>`
                     });
