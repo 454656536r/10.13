@@ -88,7 +88,7 @@
     th,
     td {
         height: 45px;
-        border: 1px solid rgb(198, 198, 198);
+        border-bottom: 1px solid rgb(198, 198, 198);
     }
 
     tbody p {
@@ -270,11 +270,9 @@
                         <label for="title">标题</label>
                         <input type="text" id="title" name="title" required>
 
-                        <!-- <button type="button" class="layui-btn" id="thumbnail">
-                            <i class="layui-icon layui-icon-upload"></i> 单图片上传
-                        </button> -->
-                        <label for="thumbnail">图片链接</label>
-                        <input type="text" id="thumbnail" name="thumbnail" required>
+                        <button class="layui-btn" id="thumbnail" style="margin-top: 20px;">单图片上传</button>
+                        <!-- <label for="thumbnail">图片链接</label>
+                        <input type="text" id="thumbnail" name="thumbnail" required> -->
 
                         <label for="sort">排序</label>
                         <input type="text" id="sort" name="sort" value="0" required>
@@ -370,23 +368,6 @@
         $(function () {
             xuanran()
         })
-        // // 图片
-        // layui.use('upload', function () {
-        //     var upload = layui.upload;
-        //     let token = localStorage.getItem("rty")
-        //     // 单图片上传
-        //     var uploadInst = upload.render({
-        //         elem: '#thumbnail',
-        //         url: 'https://manage.zzgoodqc.cn/api/upload',
-        //         style: "file",
-        //         headers: {
-        //             Authorization: token
-        //         },
-        //         done: function (res) {
-        //             console.log(res);
-        //         },
-        //     });
-        // });
         // 搜索
         $("#sous").click(function () {
             let der = {
