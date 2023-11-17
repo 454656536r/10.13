@@ -10,7 +10,7 @@
 <style>
     .box {
         width: 100%;
-        /* height: 100vh; */
+        height: 100vh;
         /* background-color: rgb(255, 215, 162); */
         overflow: hidden;
     }
@@ -404,6 +404,21 @@
                 }
             })
         })
+        // 恢复
+        $("tbody").on('click', "button#huifu", function () {
+            var aidi = $(this).data('id')
+            console.log(aidi);
+            $.ajax({
+                url: "https://manage.zzgoodqc.cn/api/goods/" + aidi,
+                type:"PATCH",
+                headers: {
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+                },
+                success:function(){
+                    xuanran()
+                }
+            })
+        })
         // 编辑
         $("tbody").on('click', "button#bian", function () {
             $("#overlay1").fadeIn(200);
@@ -505,13 +520,13 @@
             var aidi = $(this).data('id')
             console.log(aidi);
             $.ajax({
-                url: "https://manage.zzgoodqc.cn/api/goods/solt/" + aidi,
+                url: "https://manage.zzgoodqc.cn/api/goods/recycle/" + aidi,
                 type: "DELETE",
+                dataType: "json",
                 headers: {
                     Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
                 },
-                success: function (res) {
-                    console.log(res);
+                success: function () {
                     xuanran()
                 }
             })
@@ -520,7 +535,7 @@
         function xuanran() {
             html = ""
             $.ajax({
-                url: `http://manage.zzgoodqc.cn/api/goods?page=${page}&limit=${limit}&is_sale=1`,// 分页
+                url: `http://manage.zzgoodqc.cn/api/goods?page=${page}&limit=${limit}&is_recycle=1`,// 分页
                 type: "GET",
                 dataType: "json",
                 headers: {
@@ -542,8 +557,8 @@
                         <td>${item.create_time}</td>
                         <td><button data-id="${item.id}">下架</button>
                         <button id="bian" data-id="${item.id}">编辑</button><br>
-                        <button>查看</button>
-                        <button id="huishou" data-id="${item.id}">删除到回收站</button>
+                        <button id="huifu" data-id="${item.id}">恢复</button>
+                        <button id="huishou" data-id="${item.id}">删除</button>
                         </td>
                     </tr>`
                     });

@@ -58,10 +58,12 @@
 <body>
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
-            <div class="layui-logo layui-hide-xs layui-bg-black"><h2>后台管理</h2></div>
+            <div class="layui-logo layui-hide-xs layui-bg-black">
+                <h2>后台管理</h2>
+            </div>
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
-                    <a href="javascript:;"lay-header-event="menuRight">
+                    <a href="javascript:;" lay-header-event="menuRight">
                         <img src="https://picsum.photos/200/200" class="layui-nav-img">
                         我的
                     </a>
@@ -80,6 +82,15 @@
                             <dd><a href="javascript:;" id="">回收站</a></dd>
                         </dl>
                     </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;" id="">商品分类</a>
+                        <dl class="layui-nav-child" id="liQing">
+                            <dd><a href="javascript:;" id="">1</a></dd>
+                            <dd><a href="javascript:;" id="">2</a></dd>
+                            <dd><a href="javascript:;" id="">3</a></dd>
+                            <dd><a href="javascript:;" id="">4</a></dd>
+                        </dl>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -95,9 +106,18 @@
 
     <script src="//cdn.staticfile.org/layui/2.8.18/layui.js"></script>
     <script>
+
         $(function () {
             xuanran()
         })
+        // 移除layui-nav-itemed使其不主动展开
+        $(document).ready(function () {
+            $(".layui-nav-itemed").removeClass("layui-nav-itemed");
+        });
+        // 加载完毕自动点击
+        $(document).ready(function () {
+            $("#chushou").click();
+        });
         // 用户信息
         function xuanran() {
             $.ajax({
@@ -135,22 +155,18 @@
                         `<iframe src="./已售罄.html"></iframe>`
                     );
                     break;
-            }
-        })
-        $("#yonghu").click(function () {
-            let an = $(this).text().trim();
-            switch (an) {
-                case "用户信息":
+                case "回收站":
                     $(".layui-body").html(
-                        `<iframe src="./用户.html"></iframe>`
+                        `<iframe src="./回收站.html"></iframe>`
+                    );
+                    break;
+                case "仓库中":
+                    $(".layui-body").html(
+                        `<iframe src="./仓库.html"></iframe>`
                     );
                     break;
             }
         })
-
-        $(document).ready(function () {
-            $("#chushou").click();
-        });
         //JS 
         layui.use(['element', 'layer', 'util'], function () {
             var element = layui.element;
