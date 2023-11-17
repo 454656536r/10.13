@@ -120,11 +120,12 @@
         });
         // 用户信息
         function xuanran() {
+            let token = localStorage.getItem("rty")
             $.ajax({
                 url: "https://manage.zzgoodqc.cn/api/user/userinfo",
                 type: "GET",
                 headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+                    Authorization: token
                 },
                 success: function (res) {
                     let arr = Array(res.data)

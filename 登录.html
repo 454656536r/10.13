@@ -109,10 +109,8 @@
           password: $('#password').val(),
           expiresTime: "1y"
         },
-        headers: {
-          Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
-        },
         success: function (res) {
+          localStorage.setItem("rty",res.data.token)
           console.log(res.data.token);
           if (res.status == '200') {
             alert("登录成功");

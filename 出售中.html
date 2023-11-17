@@ -374,12 +374,13 @@
                 start_time: $("#time").val(),
                 type: $("#lei").val(),
             }
+            let token = localStorage.getItem("rty")
             $.ajax({
                 url: "https://manage.zzgoodqc.cn/api/goods/",
                 type: "GET",
                 data: der,
                 headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+                    Authorization: token
                 },
                 success: function (res) {
                     html = ""
@@ -410,11 +411,12 @@
             $("#popup1").fadeIn(400);
             index = $(event.target).data('id');
             $("b").html(index)
+            let token = localStorage.getItem("rty")
             $.ajax({
                 url: "https://manage.zzgoodqc.cn/api/goods/" + index,
                 type: "get",
                 headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+                    Authorization: token
                 },
                 success: function (data) {
                     console.log(data.data.title);
@@ -484,12 +486,13 @@
                 type: $("#type").val(),
                 sort: $("#sort").val(),
             };
+            let token = localStorage.getItem("rty")
             $.ajax({
                 url: "https://manage.zzgoodqc.cn/api/goods",
                 type: "POST",
                 dataType: "json",
                 headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+                    Authorization:token
                 },
                 data: data,
                 success: function (data) {
@@ -504,11 +507,12 @@
         $("tbody").on('click', "button#huishou", function () {
             var aidi = $(this).data('id')
             console.log(aidi);
+            let token = localStorage.getItem("rty")
             $.ajax({
                 url: "https://manage.zzgoodqc.cn/api/goods/solt/" + aidi,
                 type: "DELETE",
                 headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+                    Authorization: token
                 },
                 success: function (res) {
                     console.log(res);
@@ -519,12 +523,13 @@
         // 渲染
         function xuanran() {
             html = ""
+            let token = localStorage.getItem("rty")
             $.ajax({
                 url: `http://manage.zzgoodqc.cn/api/goods?page=${page}&limit=${limit}&is_sale=1`,// 分页
                 type: "GET",
                 dataType: "json",
                 headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InloYzEiLCJpZCI6NzksIm1vYmlsZSI6IjE3NTM3NjA2MTc1IiwiZW1haWwiOiIzMjAyNzM1NDA4QHFxLmNvbSIsInFxIjoiMTIxMjEyMTIxMiIsImlhdCI6MTY5OTk2MTcxNCwiZXhwIjoxNzMxNTE5MzE0fQ.GG498k4z9-P8QUNJpm9DXNbow9v-EBHNMWJLm7S0cR0"
+                    Authorization: token
                 },
                 success: function (res) {
                     console.log(res);
