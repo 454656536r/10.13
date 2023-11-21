@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./swiper-bundle.min.css" />
+
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            float: left;
+            width: 900px;
+            height: 600px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bix {
+            width: 1315px;
+            margin: auto;
+        }
+
+        .bux {
+            width: 400px;
+            height: 600px;
+            float: right;
+            background-color: aqua;
+        }
+
+        .swiper-horizontal>.swiper-pagination-bullets,
+        .swiper-pagination-bullets.swiper-pagination-horizontal,
+        .swiper-pagination-custom,
+        .swiper-pagination-fraction {
+            width: 200px;
+            float: left;
+        }
+
+        .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+        .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+            width: 15px;
+            height: 15px;
+            background-color: #eee;
+        }
+
+        .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-next:after {
+            content: '';
+        }
+
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+            content: '';
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            font-size: 30px;
+            color: #eee;
+        }
+
+        .swiper-button-next {
+            background-color: rgba(154, 154, 154, 0.5);
+            width: 40px;
+            line-height: 20px;
+            height: 40px;
+            float: right;
+            margin-right: -10px;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .swiper-button-prev {
+            background-color: rgba(154, 154, 154, 0.5);
+            width: 40px;
+            line-height: 20px;
+            height: 40px;
+            float: left;
+            margin-left: -10px;
+            border-radius: 0 20px 20px 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="bix">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img
+                        src="https://img10.360buyimg.com/pop/s1180x940_jfs/t1/188581/11/41061/68577/655716c4Ffa75c03c/7c6e46c0db6ef374.jpg.webp" />
+                </div>
+                <div class="swiper-slide">
+                    <img
+                        src="https://imgcps.jd.com/img-cubic/creative_server_cia_jdcloud/v2/2000366/10067199166788/FocusFullshop/CkNqZnMvdDEvMTA1OTkwLzEwLzQ1NzUxLzg5Mjc0LzY1NTUyNDI2RjczZDdiOTUxL2I5NDEwZmIwZmJiNWFmY2IucG5nEgkyLXR5XzBfNTMwAjjui3pCEwoP5oi05bCU5Y-w5byP5py6EAFCEAoM55ub5oOg54us5LqrEAJCEAoM56uL5Y2z5oqi6LStEAZCCgoG5Yqb6I2QEAdYxJLSnv-kAg/cr/s/q.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img
+                        src="https://imgcps.jd.com/img-cubic/creative_server_cia_jdcloud/v2/2000367/10038970249476/FocusFullshop/CkNqZnMvdDEvMTg0NDA0LzI2LzQyMjU0LzcwMDc1LzY1NDU1Y2VjRjQyNGY0ZGI5LzdiOGFmMjZkZjAwMTA2M2EucG5nEgkzLXR5XzBfNTQwAjjvi3pCDQoJUk9H6ZSu55uYEAFCEwoP54mp576O5Lu35pu05LyYEAJCEAoM56uL5Y2z5oqi6LStEAZCCgoG5Yqb6I2QEAdYhOKFipakAg/cr/s/q.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img
+                        src="https://imgcps.jd.com/ling-cubic/ling4/lab/amZzL3QxLzE0NzI1NC8yOS8xNzc4MS8xODg0NjUvNWZkMDg1NzNFMDVlY2RjNTUvMjBjNjZmYTllZmJmZmY2NC5wbmc/5Lqs6YCJ5aW96LSn/5L2g5YC85b6X5oul5pyJ/1635185337375584258/cr/s/q.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img
+                        src="https://imgcps.jd.com/img-cubic/creative_server_cia_jdcloud/v2/2000366/10040015868240/FocusFullshop/CkJqZnMvdDEvODgyNDUvMS8zMDg2MS85ODQ0OTYvNjU0ZDM4NWJGNTQxMDI2MzEvMjA4ZWEyMDEwNzdlMDc2Yy5wbmcSCTItdHlfMF81MzACOO6LekIWChLljY7noZXnu4Too4XnlLXohJEQAUISCg7mu6E1MDAw5YePMTEwMBACQhAKDOeri-WNs-aKoui0rRAGQgoKBuWKm-iNkBAHWNCi0fyZpAI/cr/s/q.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img
+                        src="https://imgcps.jd.com/img-cubic/creative_server_cia_jdcloud/v2/2000367/10044527344297/FocusFullshop/CkRqZnMvdDEvMTkyMjUxLzIwLzQxNDMyLzU1NDE3NC82NTQ1NWRkN0Y3Y2UyNWI0Ni9hYTVlMTUyMTkwOGMzMWQ3LnBuZxIJMy10eV8wXzU0MAI474t6QhEKDUhVV0nnrJTorrDmnKwQAUITCg_kvaDlgLzlvpfmi6XmnIkQAkIQCgznq4vljbPmiqLotK0QBkIHCgPmiqIQB1ip9e_jqqQC/cr/s/q.jpg" />
+                </div>
+            </div>
+            <div class="swiper-button-next">›</div>
+            <div class="swiper-button-prev">‹</div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="bux">
+            <iframe src="./京东右.html" frameborder="0"></iframe>
+        </div>
+    </div>
+
+
+    <!-- Swiper JS -->
+    <script src="./swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            cssMode: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            mousewheel: true,
+            keyboard: true,
+        });
+    </script>
+</body>
+
+</html>

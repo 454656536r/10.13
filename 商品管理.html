@@ -88,6 +88,13 @@
                             <dd><a href="javascript:;" id="">分类</a></dd>
                         </dl>
                     </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;" id="">轮播</a>
+                        <dl class="layui-nav-child" id="liQing">
+                            <dd><a href="javascript:;" id="">邮政</a></dd>
+                            <dd><a href="javascript:;" id="">京东</a></dd>
+                        </dl>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -166,6 +173,16 @@
                 case "分类":
                     $(".layui-body").html(
                         `<iframe src="./分类.html"></iframe>`
+                    );
+                    break;
+                case "邮政":
+                    $(".layui-body").html(
+                        `<iframe src="./邮政.html"></iframe>`
+                    );
+                    break;
+                    case "京东":
+                    $(".layui-body").html(
+                        `<iframe src="./京东.html"></iframe>`
                     );
                     break;
             }
