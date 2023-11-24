@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://www.isqqw.com/dep/echarts/map/js/china.js"></script>
+</head>
+<style>
+    .bos {
+        width: 1000px;
+        height: 500px;
+        margin: auto;
+        background-color: rgb(255, 145, 0);
+    }
+
+    .dao {
+        width: 100%;
+        height: 50px;
+        /* background-color: aqua; */
+    }
+
+    .bix {
+        width: 2000px;
+        height: 100vh;
+        margin: auto;
+        /* background-color: aqua; */
+    }
+
+    .daop {
+        width: 2000px;
+        height: 100px;
+        margin: auto;
+        /* background-color: rgb(239, 239, 239); */
+    }
+
+    li {
+        list-style: none;
+
+    }
+
+    .lili li {
+        float: left;
+        color: gray;
+        font-size: 20px;
+        margin-left: 300px;
+        line-height: 70px;
+    }
+
+    .shuj li {
+        float: left;
+        color: gray;
+        font-size: 20px;
+        margin-left: 325px;
+        /* line-height: 70px; */
+    }
+
+    .youbian {
+        width: 500px;
+        height: 270px;
+        float: right;
+        margin-top: -500px;
+        /* background-color: aquamarine; */
+    }
+
+    tr th {
+        width: 200px;
+    }
+
+    thead {
+        background-color: gray;
+    }
+</style>
+<div class="bix">
+    <div class="daop">
+        <ul class="lili">
+            <li>浏览量</li>
+            <li>访客数</li>
+            <li>IP数</li>
+            <li>跳出率</li>
+            <li>平均访问时长</li>
+        </ul>
+        <ul class="shuj">
+            <li>50</li>
+            <li>27</li>
+            <li>7</li>
+            <li>87.5%</li>
+            <li>00:04:08</li>
+        </ul>
+    </div>
+    <div class="bos" id="asd"></div>
+    <div class="youbian">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>省份</th>
+                    <th>浏览量</th>
+                    <th>占比</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th>河南</th>
+                    <th>70%</th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>2</th>
+                    <th>湖北</th>
+                    <th>60%</th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>3</th>
+                    <th>上海</th>
+                    <th>50%</th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>4</th>
+                    <th>武汉</th>
+                    <th>40%</th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th>北京</th>
+                    <th>30%</th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>5</th>
+                    <th>天津</th>
+                    <th>20%</th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>6</th>
+                    <th>南京</th>
+                    <th>10%</th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>7</th>
+                    <th>苏州</th>
+                    <th>10%</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<body>
+    <script>
+        var myChart = echarts.init(document.getElementById('asd'));
+        option = {
+            backgroundColor: '#FFFFFF',
+            visualMap: {
+                min: 1,
+                max: 800,
+                itemWidth: 10,
+                itemHeight: 60,
+                borderColor: '#fff',
+                hoverLink: false,
+                show: true,
+                orient: 'horizontal',
+                inverse: true,
+                calculable: false,
+                realtime: false,
+                text: [],
+                inRange: {
+                    color: ['#fff', '#396fff']
+                }
+            },
+            //配置属性
+            series: [{
+                name: '数据',
+                type: 'map',
+                mapType: 'china',
+                roam: false,
+                zoom: 1,
+                itemStyle: {
+                    normal: {
+                        label: { show: false },
+                        borderColor: '#000',
+                        borderWidth: 1,
+                        borderType: 'solid',
+                    },
+                    emphasis: {
+                        label: { show: false },
+                        areaColor: '#396fff'
+                    }
+                },
+                data: [
+                    { name: '北京', }, { name: '天津', },
+                    { name: '上海', }, { name: '重庆', },
+                    { name: '河北', }, { name: '河南',value: 999 },
+                    { name: '云南', }, { name: '辽宁', },
+                    { name: '黑龙江' }, { name: '湖南',},
+                    { name: '安徽', }, { name: '山东', },
+                    { name: '新疆', }, { name: '江苏', },
+                    { name: '浙江', }, { name: '江西', },
+                    { name: '湖北', }, { name: '广西', },
+                    { name: '甘肃', }, { name: '山西', },
+                    { name: '内蒙古', }, { name: '陕西', },
+                    { name: '吉林', }, { name: '福建', },
+                    { name: '贵州', }, { name: '广东', },
+                    { name: '青海', }, { name: '西藏', },
+                    { name: '四川', }, { name: '宁夏', },
+                    { name: '海南', }, { name: '台湾', },
+                    { name: '香港', }, { name: '澳门', }
+                ]
+            }]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

@@ -113,6 +113,12 @@
                             <dd><a href="javascript:;" id="">地图</a></dd>
                         </dl>
                     </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;" id="">11.24考试</a>
+                        <dl class="layui-nav-child" id="liQing">
+                            <dd><a href="javascript:;" id="">考试</a></dd>
+                        </dl>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -197,24 +203,29 @@
                         `<iframe src="./轮播/邮政.html"></iframe>`
                     );
                     break;
-                    case "京东":
+                case "京东":
                     $(".layui-body").html(
                         `<iframe src="./轮播/京东.html"></iframe>`
                     );
                     break;
-                    case "邮政网页":
+                case "邮政网页":
                     $(".layui-body").html(
                         `<iframe src="./邮政网页/中国邮政.html"></iframe>`
                     );
                     break;
-                    case "图表":
+                case "图表":
                     $(".layui-body").html(
                         `<iframe src="./图表作业/index.html"></iframe>`
                     );
                     break;
-                    case "地图":
+                case "地图":
                     $(".layui-body").html(
                         `<iframe src="./地图作业/吾悦路线.html"></iframe>`
+                    );
+                    break;
+                case "考试":
+                    $(".layui-body").html(
+                        `<iframe src="./11.24插件考试/index.html"></iframe>`
                     );
                     break;
             }
