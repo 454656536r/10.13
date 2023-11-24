@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./swiper-bundle.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .box {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .tou {
+        width: 100%;
+        height: 42px;
+        /* background-color: aquamarine; */
+    }
+
+    .zhongxin {
+        width: 1000px;
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+        margin: auto;
+    }
+
+    .dao li {
+        float: left;
+        margin-left: 23px;
+        line-height: 40px;
+    }
+
+    .dao li:hover {
+        color: green;
+        border-bottom: 3px solid green;
+    }
+
+    .kuang {
+        width: 160px;
+        height: 20px;
+        font-size: 12px;
+        margin: 8px;
+        margin-left: 50px;
+    }
+
+    .an {
+        background-color: green;
+        border: none;
+        width: 60px;
+        height: 25px;
+        border-radius: 2px;
+        color: whitesmoke;
+        margin-top: 5px;
+    }
+
+    html,
+    body {
+        position: relative;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+    .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+        background-color: green;
+        width: 10px;
+        height: 10px;
+    }
+
+    .swiper {
+        /* margin-top: 30px; */
+        width: 1000px;
+        /* height: 260px; */
+
+    }
+
+    .bix {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        /* background-color: antiquewhite; */
+    }
+
+    .shen {
+        width: 100%;
+        height: 105px;
+        overflow: hidden;
+        margin-top: 300px;
+        /* background-color: rgb(255, 146, 4); */
+    }
+
+    .fen {
+        width: 140px;
+        height: 80px;
+        /* background-color: #eee; */
+        border-radius: 10px;
+        float: left;
+        /* margin-left: 10px; */
+        margin: 13px;
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .imge {
+        text-align: center;
+        float: left;
+        margin: 12px;
+        line-height: 80px;
+    }
+
+    h3 {
+        margin-top: 30px;
+    }
+
+    .lunhe {
+        width: 1020px;
+        height: 400px;
+        /* overflow: hidden; */
+        /* margin-top: 300px; */
+        /* background-color: aqua; */
+    }
+
+    .zo {
+        width: 400px;
+        height: 400px;
+        /* background-color: antiquewhite; */
+        float: left;
+    }
+
+    .you {
+        width: 600px;
+        height: 400px;
+        float: right;
+        /* background-color: chartreuse; */
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    .shipin {
+        /* background-color: aqua; */
+        height: 500px;
+        margin-top: 10px;
+
+    }
+
+    .shizo {
+        float: left;
+        width: 400px;
+        /* height: 300px; */
+    }
+
+    .xia {
+        width: 400px;
+        height: 63px;
+        /* background-color: chartreuse; */
+        float: left;
+        padding: 10px;
+    }
+
+    .xw {
+        width: 400px;
+        height: 90px;
+        float: left;
+        line-height: 100px;
+        /* background-color: #fff; */
+        border-bottom: 1px solid gray;
+    }
+
+    .lv {
+        width: 10px;
+        height: 20px;
+        background-color: green;
+        float: left;
+        margin-top: 40px;
+        border-radius: 10px;
+        margin-left: 10px;
+        margin-right: 5px;
+    }
+
+    .zi {
+        height: 50px;
+        margin-top: -4px;
+        line-height: 50px;
+        /* background-color: #f4f4f4; */
+    }
+
+    .xia li {
+        font-size: 16px;
+    }
+
+    .tabyou {
+        width: 600px;
+        height: 445px;
+        float: right;
+        margin-top: 40px;
+        background-color: #f4f4f4;
+    }
+
+    video {
+        width: 400px;
+    }
+
+    .ditu {
+        width: 1000px;
+        height: 600px;
+        /* background-color: antiquewhite; */
+    }
+
+    .diyou {
+        width: 650px;
+        height: 600px;
+        /* background-color: bisque; */
+        float: left;
+    }
+
+    .kaitou {
+        width: 100%;
+        height: 50px;
+        /* background-color: #f4f4f4; */
+        float: left;
+        font-size: 20px;
+        line-height: 50px;
+        border-bottom: 1px solid gray;
+    }
+
+    .lve {
+        width: 10px;
+        height: 30px;
+        background-color: green;
+        float: left;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .kaitou img {
+        margin-top: 17px;
+        margin-left: 10px;
+        float: left;
+    }
+
+    .tu {
+        float: left;
+        height: 500px;
+        width: 100%;
+        background-color: aqua;
+    }
+
+    .maao {
+        width: 350px;
+        height: 100%;
+        float: right;
+        /* background-color: #ffa5a5; */
+    }
+
+    .haoma {
+        height: 300px;
+        background-color: #fff;
+
+    }
+
+    .haoma p {
+        /* margin: 30px; */
+        font-size: 20px;
+        margin-top: 5px;
+        margin-left: 30px;
+        float: left;
+    }
+
+    .haoma span {
+        color: green;
+    }
+
+    .haoma button {
+        background-color: green;
+        color: white;
+        border: none;
+        width: 300px;
+        height: 50px;
+        margin-left: 30px;
+        margin-top: 10px;
+        font-size: 17px;
+        border-radius: 10px;
+    }
+
+    .erweima {
+        width: 165px;
+        height: 115px;
+        /* background-color: #eee; */
+        float: left;
+        margin: 5px;
+        color: gray;
+    }
+
+    .erweima img {
+        width: 90px;
+        height: 90px;
+        margin-right: 36px;
+        margin-left: 36px;
+    }
+
+    .erweima span {
+        font-size: 12px;
+        margin-left: 30px;
+    }
+
+    .footer {
+        background-color: rgb(239, 239, 239);
+        height: 120px;
+        margin: auto;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .lianjie {
+        margin: auto;
+        width: 500px;
+        height: 50px;
+        margin-top: 20px;
+        /* background-color: #eee; */
+    }
+    .lianjie li{
+        float: left;
+        line-height: 50px;
+        margin-left: 26px;
+        
+        
+    }
+    .beian{
+        margin: auto;
+        width: 100%;
+        height: 50px;
+       border-top: 1px solid gray;
+        /* background-color: #ffadad; */
+    }
+    .beian li{
+        float: left;
+        color: gray;
+        line-height: 50px;
+        margin-left: 70px;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="zhongxin">
+            <div class="tou">
+                <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/200568120.png"
+                    style="width: 129px; float: left;">
+                <ul class="dao">
+                    <li>首页</li>
+                    <li>关于我们</li>
+                    <li>新闻中心</li>
+                    <li>建党时空</li>
+                    <li>产品服务</li>
+                    <li>社会责任</li>
+                    <li>企业文化</li>
+                </ul>
+                <input type="text" placeholder="&emsp;输入搜索关键字" class="kuang"><button class="an">搜索</button>
+                <!-- 轮播 -->
+                <div class="bix">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img
+                                    src="http://www.chinapost.com.cn/res/ChinaPostJT/page/23049817.jpg" alt=""></div>
+                            <div class="swiper-slide"><img
+                                    src="http://www.chinapost.com.cn/res/ChinaPostJT/page/23102979.png" alt=""></div>
+                            <div class="swiper-slide"><img
+                                    src="http://www.chinapost.com.cn/res/ChinaPostJT/page/22111563.jpg" alt=""></div>
+                            <div class="swiper-slide"><img
+                                    src="http://www.chinapost.com.cn/res/ChinaPostJT/page/230511601.png" alt=""></div>
+                            <div class="swiper-slide"><img
+                                    src="http://www.chinapost.com.cn/res/ChinaPostJT/page/23097160.jpg" alt=""></div>
+                            <div class="swiper-slide"><img
+                                    src="http://www.chinapost.com.cn/res/ChinaPostJT/page/2012680921.jpg" alt=""></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ti">
+                <div class="shen">
+                    <div class="fen">
+                        <p class="imge">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677353.png">
+                        <h3>邮务业务</h3>
+                        </p>
+                    </div>
+                    <div class="fen">
+                        <p class="imge">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677354.png">
+                        <h3>快递业务</h3>
+                        </p>
+                    </div>
+                    <div class="fen">
+                        <p class="imge">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677355.png">
+                        <h3>银行业务</h3>
+                        </p>
+                    </div>
+                    <div class="fen">
+                        <p class="imge">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677356.png">
+                        <h3>保险业务</h3>
+                        </p>
+                    </div>
+                    <div class="fen">
+                        <p class="imge">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677357.png">
+                        <h3>证券业务</h3>
+                        </p>
+                    </div>
+                    <div class="fen">
+                        <p class="imge">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677358.png">
+                        <h3>网上商城</h3>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="lunhe">
+                    <div class="zo">
+                        <iframe src="./轮播.html" frameborder="0"></iframe>
+                    </div>
+                    <div class="you">
+                        <iframe src="./tab.html" frameborder="0"></iframe>
+                    </div>
+                </div>
+                <div class="shipin">
+                    <div class="shizo">
+                        <div class="xw">
+                            <h2>
+                                <div class="lv"></div>邮政视频
+                            </h2>
+                        </div>
+
+                        <video controls="" height="276"
+                            src="http://v.ctvpost.com/res/ChinaPostVideo/video/23111/5122_2.mp4"
+                            width="486">&nbsp;</video>
+                        <h3 class="zi">《邮政视频联播》2023年第42期</h3>
+
+
+                        <div class="xia">
+                            <ul>
+                                <li>强邮争先锋 建功新时代</li><br>
+                                <li>了不起的中国，不一样的邮政</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tabyou">
+                        <iframe src="./tab2.html" frameborder="0"></iframe>
+                    </div>
+                </div>
+                <div class="ditu">
+                    <div class="diyou">
+                        <div class="kaitou">
+                            <div class="lve"></div>邮政网点
+                        </div>
+                        <div class="kaitou">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677420.jpg" alt="">
+                            <p style="float: left; margin-left: 50px; font-size: 15px;">邮政官网营业网点撤销信息</p>
+                            <span style="float: right; font-size: 13px; color: gray; margin-right: 10px;">查看更多</span>
+                        </div>
+                        <div class="tu">
+                            <iframe src="./地图.html" frameborder="0"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="maao">
+                        <div class="kaitou">
+                            <div class="lve"></div>客服热线
+                        </div>
+                        <div class="haoma">
+                            <p>邮政业务&emsp;&emsp;<span><b>11185</b></span></p>
+                            <p>邮储银行&emsp;&emsp;<span><b>95580</b></span></p>
+                            <p>速递物流&emsp;&emsp;<span><b>11183</b></span></p>
+                            <p>中邮保险&emsp;&emsp;<span><b>4008909999</b></span></p>
+                            <p>中邮证券&emsp;&emsp;<span><b>4008888005</b></span></p>
+                            <button>举报专区</button>
+                        </div>
+                        <div class="kaitou">
+                            <div class="lve"></div>邮政新媒体
+                        </div>
+                        <div class="erweima">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/1813129448.jpg" alt="">
+                            <span>中国邮政微信订阅号</span>
+                        </div>
+                        <div class="erweima">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/1813478632.jpg" alt="">
+                            <span>中国邮政微信订阅号</span>
+                        </div>
+                        <div class="erweima">
+                            <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/1814288693.jpg" alt="">
+                            <span>中国邮政微信订阅号</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="lianjie">
+                    <ul>
+                        <li><b>友情链接：</b></li>
+                        <li>中国政府网</li>
+                        <li>财政部</li>
+                        <li>交通运输部</li>
+                        <li>国家邮政局</li>
+                    </ul>
+                </div>
+                <div class="beian">
+                    <ul>
+                        <li>中国邮政集团有限公司版权所有</li>
+                        <li>京ICP备15035540号</li>
+                        <li>京公网安备110401400185</li>
+                        <li>联系我们</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="./swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            cssMode: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            mousewheel: true,
+            keyboard: true,
+        });
+    </script>
+</body>
+
+</html>

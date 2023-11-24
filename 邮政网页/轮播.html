@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./swiper-bundle.min.css" />
+
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 400px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 400px;
+            float: left;
+            margin-top: 10px;
+            object-fit: cover;
+        }
+
+        .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+        .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+            background-color: green;
+            width: 10px;
+            height: 7px;
+            float: right;
+            line-height: 50px;
+        }
+
+        .swiper {
+            /* margin-top: 30px; */
+            width: 400px;
+            height: 400px;
+
+        }
+
+        .bix {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            /* background-color: antiquewhite; */
+        }
+        .size{
+            width: 400px;
+            height: 20px;
+            /* background-color: aqua; */
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="bix">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20231122/27931700628696474.jpg"
+                        alt=""></div>
+                <div class="swiper-slide"><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20231121/73131700542413224.jpg"
+                        alt=""></div>
+                <div class="swiper-slide"><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20231117/58111700197138614.jpg"
+                        alt=""></div>
+                <div class="swiper-slide"><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20231115/84091700020686896.jpg"
+                        alt=""></div>
+                <div class="swiper-slide"><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20231114/47991699937359677.jpg"
+                        alt=""></div>
+                <div class="swiper-slide"><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20231110/44791699592522098.jpg"
+                        alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <script src="./swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            cssMode: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            mousewheel: true,
+            keyboard: true,
+        });
+    </script>
+</body>
+
+</html>

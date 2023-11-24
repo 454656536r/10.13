@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tabcontent {
+            display: none;
+        }
+
+        .tab button {
+            /* background-color: #f2f2f2; */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tablinks {
+            float: left;
+            line-height: 50px;
+            margin-left: 25px;
+        }
+
+        .tablinks:hover {
+            border-bottom: 4px solid green;
+        }
+
+        .zhanshi {
+            float: left;
+            width: 600px;
+            height: 200px;
+            margin-top: -15px;
+            /* background-color: aquamarine; */
+        }
+
+        .tab-container {
+            width: 600px;
+            height: 400px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .tab {
+            width: 600px;
+            height: 50px;
+            border-bottom: 1px solid gray;
+        }
+
+        .touhe {
+            height: 111px;
+            padding: 6px;
+            border-bottom: 1px solid gray;
+        }
+
+        .touhe p{
+            font-size: 12px;
+            color: #808080;
+            margin-top: 25px;
+        }
+        h4{
+            margin-top: 20px;
+        }
+        .biao{
+            height: 220px;
+            padding: 10px;
+            margin-top: 10px;
+            /* background-color: aquamarine; */
+        }
+        span{
+            float: right;
+            color: gray;
+        }
+        .biao li{
+            margin-left: 15px;
+            font-size: 15px;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab-container">
+        <div class="tab">
+            <h3 class="tablinks" onmouseover="openTab(event, 'tab1')">信息公告</h3>
+            <h3 class="tablinks" onmouseover="openTab(event, 'tab2')">邮资票品发行信息</h3>
+            <h3 class="tablinks" onmouseover="openTab(event, 'tab3')">采购公告公示</h3>
+            <h3 class="tablinks" onmouseover="openTab(event, 'tab4')">预决算公开</h3>
+        </div>
+        <div class="zhanshi">
+            <div id="tab1" class="tabcontent">
+                <div class="biao">
+                    <ul>
+                        <li>中国邮政集团有限公司声明<span>2023-11-22</span></li>
+                        <li>全国邮政代理金融本年新增储蓄存款突破九千亿元<span>2023-11-21</span></li>
+                        <li>中央和国家机关工委领导调研邮政基层联系点<span>2023-11-21</span></li>
+                        <li>全国总工会领导肯定江西邮政“产改”工作<span>2023-11-20</span></li>
+                        <li>中国邮政携手淘天打造西北集拼项目<span>2023-11-19</span></li>
+                        <li>中国邮政集团有限公司声明<span>2023-11-22</span></li>
+                        <li>全国邮政代理金融本年新增储蓄存款突破九千亿元<span>2023-11-21</span></li>
+                        <li>中央和国家机关工委领导调研邮政基层联系点<span>2023-11-21</span></li>
+                        <li>全国总工会领导肯定江西邮政“产改”工作<span>2023-11-20</span></li>
+                        <li>中国邮政携手淘天打造西北集拼项目<span>2023-11-19</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tab2" class="tabcontent">
+                <div class="biao">
+                    <ul>
+                        <li>安庆邮银全力打造金融服务乡村新模式<span>2023-11-22</span></li>
+                        <li>杭州市分行支持建设区域重点基础设施项目<span>2023-11-21</span></li>
+                        <li>金融活水润高原 “邮”墨重彩绘新篇<span>2023-11-21</span></li>
+                        <li>建宁邮政水果季项目创佳绩<span>2023-11-20</span></li>
+                        <li>银担惠农 油茶丰收<span>2023-11-19</span></li>
+                        <li>安庆邮银全力打造金融服务乡村新模式<span>2023-11-22</span></li>
+                        <li>杭州市分行支持建设区域重点基础设施项目<span>2023-11-21</span></li>
+                        <li>金融活水润高原 “邮”墨重彩绘新篇<span>2023-11-21</span></li>
+                        <li>建宁邮政水果季项目创佳绩<span>2023-11-20</span></li>
+                        <li>银担惠农 油茶丰收<span>2023-11-19</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tab3" class="tabcontent">
+                <div class="biao">
+                    <ul>
+                        <li>中国邮政集团有限公司声明<span>2023-11-22</span></li>
+                        <li>全国邮政代理金融本年新增储蓄存款突破九千亿元<span>2023-11-21</span></li>
+                        <li>中央和国家机关工委领导调研邮政基层联系点<span>2023-11-21</span></li>
+                        <li>全国总工会领导肯定江西邮政“产改”工作<span>2023-11-20</span></li>
+                        <li>中国邮政携手淘天打造西北集拼项目<span>2023-11-19</span></li>
+                        <li>中国邮政集团有限公司声明<span>2023-11-22</span></li>
+                        <li>全国邮政代理金融本年新增储蓄存款突破九千亿元<span>2023-11-21</span></li>
+                        <li>中央和国家机关工委领导调研邮政基层联系点<span>2023-11-21</span></li>
+                        <li>全国总工会领导肯定江西邮政“产改”工作<span>2023-11-20</span></li>
+                        <li>中国邮政携手淘天打造西北集拼项目<span>2023-11-19</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tab4" class="tabcontent">
+                <div class="biao">
+                    <ul>
+                        <li>安庆邮银全力打造金融服务乡村新模式<span>2023-11-22</span></li>
+                        <li>杭州市分行支持建设区域重点基础设施项目<span>2023-11-21</span></li>
+                        <li>金融活水润高原 “邮”墨重彩绘新篇<span>2023-11-21</span></li>
+                        <li>建宁邮政水果季项目创佳绩<span>2023-11-20</span></li>
+                        <li>银担惠农 油茶丰收<span>2023-11-19</span></li>
+                        <li>安庆邮银全力打造金融服务乡村新模式<span>2023-11-22</span></li>
+                        <li>杭州市分行支持建设区域重点基础设施项目<span>2023-11-21</span></li>
+                        <li>金融活水润高原 “邮”墨重彩绘新篇<span>2023-11-21</span></li>
+                        <li>建宁邮政水果季项目创佳绩<span>2023-11-20</span></li>
+                        <li>银担惠农 油茶丰收<span>2023-11-19</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+
+            // 隐藏所有内容
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // 移除所有按钮的激活状态
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // 显示当前标签页的内容并将按钮标记为激活状态
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 默认显示第一个标签页的内容
+        document.getElementById("tab1").style.display = "block";
+
+
+
+    </script>
+</body>
+
+</html>

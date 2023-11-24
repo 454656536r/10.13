@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tabcontent {
+            display: none;
+        }
+
+        .tab button {
+            background-color: #f2f2f2;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .tablinks {
+            float: left;
+            margin-left: 25px;
+        }
+
+        .tablinks:hover {
+            border-bottom: 4px solid green;
+        }
+
+        .zhanshi {
+            float: left;
+            width: 600px;
+            height: 200px;
+            margin-top: -15px;
+            /* background-color: aquamarine; */
+        }
+
+        .tab-container {
+            width: 600px;
+            height: 400px;
+            /* background-color: antiquewhite; */
+        }
+
+        .tab {
+            width: 600px;
+            height: 35px;
+            border-bottom: 1px solid gray;
+        }
+
+        .touhe {
+            height: 111px;
+            padding: 6px;
+            border-bottom: 1px solid gray;
+        }
+
+        .touhe p{
+            font-size: 12px;
+            color: #808080;
+            margin-top: 25px;
+        }
+        h4{
+            margin-top: 20px;
+        }
+        .biao{
+            height: 220px;
+            padding: 10px;
+            /* background-color: aquamarine; */
+        }
+        span{
+            float: right;
+            color: gray;
+        }
+        .biao li{
+            margin-left: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab-container">
+        <div class="tab">
+            <h2 class="tablinks" onmouseover="openTab(event, 'tab1')">集团要问</h2>
+            <h2 class="tablinks" onmouseover="openTab(event, 'tab2')">综合新闻</h2>
+            <h2 class="tablinks" onmouseover="openTab(event, 'tab3')">媒体聚焦</h2>
+            <h2 class="tablinks" onmouseover="openTab(event, 'tab4')">一线风采</h2>
+        </div>
+        <div class="zhanshi">
+            <div id="tab1" class="tabcontent">
+                <div class="touhe">
+                    <h4>体系化推进服务乡村振兴取得规模化成效 走出一条具有邮政特色服务乡村振兴之路</h3>
+                        <p>11月14日至16日，集团公司在浙江杭州召开高质量开展第二批主题教育暨服务乡村振兴现场推进会，深入贯彻习近平新时代中国特色社会主义思想和...</p>
+                </div>
+                <div class="biao">
+                    <ul>
+                        <li>深入开展重点领域风险隐患排查整治 加快推进邮政安全生产管理体系建设<span>2023-11-22</span></li><br>
+                        <li>全国邮政代理金融本年新增储蓄存款突破九千亿元<span>2023-11-21</span></li><br>
+                        <li>中央和国家机关工委领导调研邮政基层联系点<span>2023-11-21</span></li><br>
+                        <li>全国总工会领导肯定江西邮政“产改”工作<span>2023-11-20</span></li><br>
+                        <li>中国邮政携手淘天打造西北集拼项目<span>2023-11-19</span></li><br>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tab2" class="tabcontent">
+                <div class="touhe">
+                    <h4>建功沃野展宏图</h3>
+                        <p>江南忆，最忆是杭州。11月的杭州，虽已过立冬时节，拂面而来的风却无寒意。天空湛蓝，阳光正好，让这片水墨江南灵秀之地更显生机与活力。？...</p>
+                </div>
+                <div class="biao">
+                    <ul>
+                        <li>安庆邮银全力打造金融服务乡村新模式<span>2023-11-22</span></li><br>
+                        <li>杭州市分行支持建设区域重点基础设施项目<span>2023-11-21</span></li><br>
+                        <li>金融活水润高原 “邮”墨重彩绘新篇<span>2023-11-21</span></li><br>
+                        <li>建宁邮政水果季项目创佳绩<span>2023-11-20</span></li><br>
+                        <li>银担惠农 油茶丰收<span>2023-11-19</span></li><br>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tab3" class="tabcontent">
+                <div class="touhe">
+                    <h4>邮路新变</h3>
+                        <p>今年“双十一”购物，甘肃快递业务量激增却未引发邮件积压，不少人感慨快递投递变快了。为了一探究竟，记者走访基层投递网络发达、覆盖面最...</p>
+                </div>
+                <div class="biao">
+                    <ul>
+                        <li><i style="color: red;">新华网：</i>中国邮政浙江行——用点点“邮政绿” 绘就一幅“乡村振兴...<span>2023-11-22</span></li><br>
+                        <li><i style="color: red;">吉林日报：</i>珲马铁路邮政专列实现常态化运行...<span>2023-11-21</span></li><br>
+                        <li><i style="color: red;">南京日报：</i>维护国家经济安全 南京邮政协助破获多起涉嫌走私案件...<span>2023-11-21</span></li><br>
+                        <li><i style="color: red;">多彩贵州网：</i>提前部署 增强运力 贵州邮政保障快递服务平稳有序...<span>2023-11-20</span></li><br>
+                        <li><i style="color: red;">扬子晚报网：</i>全天候“不打烊” 邮政自助驿站亮相海安...<span>2023-11-19</span></li><br>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tab4" class="tabcontent">
+                <div class="touhe">
+                    <h4>走进乡村沃野 讲述邮政故事</h3>
+                        <p>记者，是一个永远在路上的职业。他们不是在采访现场，就是在前往现场的路上。今年，本报开展了“高质量发展蹲点调研行”主题采访活动，组织...</p>
+                </div>
+                <div class="biao">
+                    <ul>
+                        <li>刘婷：深入群众 滋润民心<span>2023-11-22</span></li><br>
+                        <li>韦艳梅：履职尽责 勇当先锋<span>2023-11-21</span></li><br>
+                        <li>葛军：敬业奉献 久久为功<span>2023-11-21</span></li><br>
+                        <li>其美多吉：坚守初心 用情奋斗<span>2023-11-20</span></li><br>
+                        <li>浑身“蟹”数 助洪湖清水蟹旺销<span>2023-11-19</span></li><br>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+
+            // 隐藏所有内容
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // 移除所有按钮的激活状态
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // 显示当前标签页的内容并将按钮标记为激活状态
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // 默认显示第一个标签页的内容
+        document.getElementById("tab1").style.display = "block";
+
+
+
+    </script>
+</body>
+
+</html>

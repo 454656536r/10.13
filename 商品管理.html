@@ -95,13 +95,30 @@
                             <dd><a href="javascript:;" id="">京东</a></dd>
                         </dl>
                     </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;" id="">邮政网页</a>
+                        <dl class="layui-nav-child" id="liQing">
+                            <dd><a href="javascript:;" id="">邮政网页</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;" id="">图表</a>
+                        <dl class="layui-nav-child" id="liQing">
+                            <dd><a href="javascript:;" id="">图表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;" id="">地图作业</a>
+                        <dl class="layui-nav-child" id="liQing">
+                            <dd><a href="javascript:;" id="">地图</a></dd>
+                        </dl>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="layui-body">
             <!-- 内容主体区域 -->
             <div class="layui-card-body">
-
             </div>
             <br><br>
 
@@ -183,6 +200,21 @@
                     case "京东":
                     $(".layui-body").html(
                         `<iframe src="./轮播/京东.html"></iframe>`
+                    );
+                    break;
+                    case "邮政网页":
+                    $(".layui-body").html(
+                        `<iframe src="./邮政网页/中国邮政.html"></iframe>`
+                    );
+                    break;
+                    case "图表":
+                    $(".layui-body").html(
+                        `<iframe src="./图表作业/index.html"></iframe>`
+                    );
+                    break;
+                    case "地图":
+                    $(".layui-body").html(
+                        `<iframe src="./地图作业/吾悦路线.html"></iframe>`
                     );
                     break;
             }
