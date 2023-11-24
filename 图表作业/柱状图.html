@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"
+        integrity="sha256-EVZCmhajjLhgTcxlGMGUBtQiYULZCPjt0uNTFEPFTRk=" crossorigin="anonymous"></script>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+<body>
+    <div id="main" style="width:100%;height:400px;"></div>
+    <p style="background-color: rgb(0, 217, 148)"></p>
+</body>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    option = {
+        backgroundColor: '#FFF',
+        grid: {
+            top: '10%',
+            bottom: '10%',
+            left: '10%',
+            right: '4%',
+        },
+        tooltip: {
+            trigger: 'item',
+            label: {
+                show: true,
+            },
+        },
+        xAxis: {
+            boundaryGap: true, //默认，坐标轴留白策略
+            axisLine: {
+                show: false,
+            },
+            splitLine: {
+                show: false,
+            },
+            axisTick: {
+                show: false,
+                alignWithLabel: true,
+            },
+            data: ['2024-11-22', '2024-11-23', '2024-11-24', '2024-11-25', '2024-11-26', '2024-11-27', '2024-11-28', '2024-11-29', '2024-11-30'],
+        },
+        legend: {
+            data: ['新增订单']
+        },
+        yAxis: {
+            axisLine: {
+                show: false,
+            },
+            splitLine: {
+                show: true,
+                lineStyle: {
+                    type: 'dashed',
+                    color: 'rgba(74, 255, 101, 0.2)',
+                },
+            },
+            axisTick: {
+                show: false,
+            },
+        },
+        series: [
+            {
+                name:"新增订单",
+                type: 'bar',
+                itemStyle: {
+                    color: 'rgb(0, 217, 148)',
+                    borderWidth: 1,
+                    borderColor: '#FFF',
+                    barBorderRadius: [8, 8, 0, 0],
+                },
+                barWidth: 25,
+
+                label: {
+                    show: false,
+                    distance: 1,
+                },
+                data: [2, 1, 2, 3, 1, 5, 4, 2, 3],
+            },
+        ],
+    }
+    myChart.setOption(option);
+</script>
+
+</html>
